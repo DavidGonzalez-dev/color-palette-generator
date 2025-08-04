@@ -1,1 +1,19 @@
-/* You can add global styles to this file, and also import other style files */
+:root {
+    --primary-color: #3572EF;
+    --primary-text-color: #222831;
+    --secondary-text-color: #969494;
+    --font-family:'Clash Grotesk', sans-serif;
+}
+
+* {
+    color: var(--primary-text-color);
+    font-family: var(--font-family);
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    height: 100vh;
+    width: 100vw;
+}
