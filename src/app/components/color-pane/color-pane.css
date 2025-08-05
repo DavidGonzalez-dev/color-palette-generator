@@ -6,11 +6,6 @@
     gap: 10px;
 }
 
-.color-pane-container p {
-    font-size: 1.1rem;
-    font-weight: medium;
-}
-
 .color-pane {
     min-width: 200px;
     width: fit-content;
@@ -23,15 +18,4 @@
     align-items: flex-end;
 }
 
-.color-pane h6{
-    font-size: 1.5rem;
-    cursor: pointer;
-    transition: .2s ease-out;
-    padding: 10px;
-    border-radius: 5px;
-}
-
-.color-pane h6:hover {
-    background: #00000044;
-}
 

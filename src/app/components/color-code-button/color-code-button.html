@@ -1,0 +1,11 @@
+<button 
+    [class]="variant()"
+    [style]="{'color': copied ? 'white' :  textColor(), 'background-color': copied ? 'black' : ''}"
+    (click)="copyCodeToClipboard($event)">
+
+    @if (copied) {
+    Copied!
+    } @else {
+    <ng-content />
+    }
+</button>
