@@ -1,4 +1,4 @@
-export interface  HSL {
+export interface HSL {
     hue: number
     saturation: number
     lightness: number
@@ -11,6 +11,7 @@ export interface RGB {
 }
 
 export interface Color {
+    name: string
     hex: string
     hsl: HSL
     rgb: RGB

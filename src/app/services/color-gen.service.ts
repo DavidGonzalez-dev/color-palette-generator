@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import chroma from 'chroma-js';
 import { Color, HSL, RGB } from '../models';
+import ColorNamer from 'color-namer';
 
 @Injectable({
   providedIn: 'root'
@@ -8,7 +9,7 @@ import { Color, HSL, RGB } from '../models';
 export class ColorGenService {
 
   getColorCodes(color: string): Color {
-    return { hex: chroma(color).hex(), hsl: this.getHslCodeFromColor(color), rgb: this.getRgbCodeFromColor(color) }
+    return {name: ColorNamer(color).pantone[0].name, hex: chroma(color).hex(), hsl: this.getHslCodeFromColor(color), rgb: this.getRgbCodeFromColor(color) }
   }
 
   getMonoPalette(color: Color, paletteSize: number) {
