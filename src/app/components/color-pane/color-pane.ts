@@ -11,16 +11,14 @@ import { ColorCodeButtonComponent } from '@components/index';
   styleUrl: './color-pane.css'
 })
 export class ColorPaneComponent {
-
-  color = input('')
-  copied = false
+  
   colorService = inject(ColorGenService)
 
-  colorCodes = computed<Color>(() => (this.colorService.getColorCodesWithHex(this.color())))
-
+  color =  input.required<Color>()
+  
   textColor = computed<string>(() => {
-    const contrastWithWhite = chroma.contrast(this.color(), "#ffffff")
-    const contrastWithBlack = chroma.contrast(this.color(), "#000000")
+    const contrastWithWhite = chroma.contrast(this.color()?.hex as string, "#ffffff")
+    const contrastWithBlack = chroma.contrast(this.color()?.hex as string, "#000000")
 
     return contrastWithWhite > contrastWithBlack ? "#ffffff" : "#000000"
   })

@@ -1,10 +1,10 @@
 button {
     cursor: pointer;
-    transition: .5s ease-out;
+    transition: .2s ease-out;
     padding: 5px 10px;
     border: none;
-    border-radius: 5px;
-    width: 100%;
+    border-radius: 20px;
+    width: 170px;
 }
 
 .primary-button {

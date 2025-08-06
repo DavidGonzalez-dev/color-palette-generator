@@ -1,6 +1,6 @@
 <button 
     [class]="variant()"
-    [style]="{'color': copied ? 'white' :  textColor(), 'background-color': copied ? 'black' : ''}"
+    [style]="{'color': copied ? 'white' :  textColor(), 'background-color': copied ? '#222831' : ''}"
     (click)="copyCodeToClipboard($event)">
 
     @if (copied) {

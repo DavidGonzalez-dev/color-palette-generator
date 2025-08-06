@@ -1,9 +1,9 @@
 import { Component, signal } from '@angular/core';
-import { ColorPaneComponent } from './components/color-pane/color-pane';
+import { ColorPalette } from '@components/index';
 
 @Component({
   selector: 'app-root',
-  imports: [ColorPaneComponent],
+  imports: [ColorPalette],
   templateUrl: './app.html',
   styleUrl: './app.css'
 })

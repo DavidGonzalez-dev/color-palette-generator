@@ -1,10 +1,12 @@
 <div class="color-pane-container">
 
-    <div [style.background-color]="color()" class="color-pane">
-        <app-color-code-button variant="primary-button" [textColor]="textColor()">{{ colorCodes().hex }}</app-color-code-button>
+    <div [style.background-color]="color().hex" class="color-pane">
+        <app-color-code-button variant="primary-button" [textColor]="textColor()">
+            {{ color().hex }}
+        </app-color-code-button>
     </div>
 
     <app-color-code-button variant="base-button">
-        rgb({{ colorCodes().rgb[0] }}, {{ colorCodes().rgb[1] }}, {{ colorCodes().rgb[2] }})
+        rgb({{ color().rgb.red }}, {{ color().rgb.green }}, {{ color().rgb.blue }})
     </app-color-code-button>
 </div>

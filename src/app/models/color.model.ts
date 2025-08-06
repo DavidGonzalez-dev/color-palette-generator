@@ -1,5 +1,17 @@
+export interface  HSL {
+    hue: number
+    saturation: number
+    lightness: number
+}
+
+export interface RGB {
+    red: number
+    green: number
+    blue: number
+}
+
 export interface Color {
     hex: string
-    hsl: [number, number, number]
-    rgb: [number, number, number]
+    hsl: HSL
+    rgb: RGB
 }
