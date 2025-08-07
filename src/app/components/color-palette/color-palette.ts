@@ -14,6 +14,6 @@ export class ColorPaletteComponent {
   private colorService = inject(ColorGenService)
 
   readonly baseColor = computed(() => this.colorService.getBaseColor())
-  readonly palette = computed<Color[]>(() => this.colorService.getMonoPalette(this.baseColor(), 5))
+  readonly palette = computed<Color[]>(() => this.colorService.getColorPalette(this.baseColor(), 5))
 
 }

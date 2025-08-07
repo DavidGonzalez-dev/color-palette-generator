@@ -1,6 +1,6 @@
 import { Injectable, signal } from '@angular/core';
 import chroma from 'chroma-js';
-import { Color, HSL, RGB } from '../models';
+import { Color, HSL, PaletteTypes, RGB } from '../models';
 import ColorNamer from 'color-namer';
 
 @Injectable({
@@ -9,6 +9,7 @@ import ColorNamer from 'color-namer';
 export class ColorGenService {
 
   private baseColor = signal<Color>(this.getColorCodes("black"))
+  private paletteType = PaletteTypes.MONO
 
   setBaseColor(color: string) {
     this.baseColor.set(this.getColorCodes(color))
@@ -18,8 +19,27 @@ export class ColorGenService {
     return this.baseColor()
   }
 
+  setPaletteType(paletteType: PaletteTypes) {
+    this.paletteType = paletteType
+  }
+
+  getPaletteType() {
+    return this.paletteType
+  }
+
   getColorCodes(color: string): Color {
     return { name: ColorNamer(color).ntc[0].name, hex: chroma(color).hex(), hsl: this.getHslCodeFromColor(color), rgb: this.getRgbCodeFromColor(color) }
+  }
+
+  getColorPalette(baseColor: Color, paletteSize:number): Color[] {
+    
+    switch (this.paletteType) {
+      case PaletteTypes.MONO:
+        return this.getMonoPalette(baseColor, paletteSize)
+      default:
+        return []
+    }
+
   }
 
   getMonoPalette(color: Color, paletteSize: number) {

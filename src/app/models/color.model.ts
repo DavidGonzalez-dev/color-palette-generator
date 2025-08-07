@@ -16,3 +16,10 @@ export interface Color {
     hsl: HSL
     rgb: RGB
 }
+
+export enum PaletteTypes {
+    MONO = "mono",
+    ANALOG = "analogous",
+    TRIADIC = "triadic",
+    COMPLEMENTARY = "complementary"
+}
