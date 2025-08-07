@@ -17,6 +17,4 @@ export class ColorPalette {
   readonly baseColorCodes = computed<Color>(() => this.colorService.getColorCodes(this.baseColor()))
   readonly palette = computed<Color[]>(() => this.colorService.getMonoPalette(this.baseColorCodes(), 5))
 
-    
-
 }

@@ -1,0 +1,30 @@
+#main-section {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+}
+
+header {
+    display: flex;
+    gap: 5px;
+    align-items: center;
+    padding: 30px;
+    height: 10vh;
+}
+
+header h1 {
+    color: var(--primary-color);
+    font-size: 4rem;
+}
+
+header span {
+    font-size: 1.2rem;
+}
+
+main{
+    height: 90vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 30px;
+}
