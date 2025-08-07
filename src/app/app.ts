@@ -1,9 +1,9 @@
 import { Component, signal } from '@angular/core';
-import { ColorPalette } from '@components/index';
+import {  ColorFormComponent, ColorPaletteComponent } from '@components/index';
 
 @Component({
   selector: 'app-root',
-  imports: [ColorPalette],
+  imports: [ColorPaletteComponent, ColorFormComponent],
   templateUrl: './app.html',
   styleUrl: './app.css'
 })

@@ -1,0 +1,48 @@
+:host {
+    width: 90%;
+    height: 20%;
+}
+
+.color-select-form {
+    padding: 30px;
+    box-shadow: 0 0 5px 0 #00000020;
+    border-radius: 10px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.color-input, .palette-config-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.color-prev {
+    height: 30px;
+    width: 30px;
+    border: 1px solid #00000020;
+    border-radius: 100%;
+}
+
+input, select{
+    padding: 5px 10px;
+    border-radius: 10px;
+    border: 1px solid rgb(176, 176, 176);
+    font-size: 1.1rem;
+}
+
+button {
+    padding: 7px 14px;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    background-color: var(--primary-text-color);
+    color: white;
+    font-weight: medium;
+    font-size: 1.1rem;
+    transition: .25s ease;
+}
+
+button:hover {
+    transform: scale(1.1);
+}

@@ -13,6 +13,12 @@
     width: 100%;
     background-color: white;
     border-radius: 10px;
+    box-shadow: 0 0 10px 0px #00000015;
+    transition: 0.25s all;
+}
+
+.color-pane-container:hover{
+    transform: scale(1.01);
 }
 
 .color-pane {

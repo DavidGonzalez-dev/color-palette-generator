@@ -9,12 +9,11 @@ import { Color } from '@models/color.model';
   templateUrl: './color-palette.html',
   styleUrl: './color-palette.css'
 })
-export class ColorPalette {
+export class ColorPaletteComponent {
 
   private colorService = inject(ColorGenService)
 
-  readonly baseColor = input('')
-  readonly baseColorCodes = computed<Color>(() => this.colorService.getColorCodes(this.baseColor()))
-  readonly palette = computed<Color[]>(() => this.colorService.getMonoPalette(this.baseColorCodes(), 5))
+  readonly baseColor = computed(() => this.colorService.getBaseColor())
+  readonly palette = computed<Color[]>(() => this.colorService.getMonoPalette(this.baseColor(), 5))
 
 }

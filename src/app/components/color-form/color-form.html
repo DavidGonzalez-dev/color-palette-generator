@@ -1,0 +1,17 @@
+<form class="color-select-form" (submit)="changeColor($event)">
+
+    <div class="color-input">
+        <div class="color-prev" [style.background-color]="colorCode.getRawValue()"></div>
+        <input type="text" id="color-code" [formControl]="colorCode" placeholder="#hex">
+    </div>
+
+    <div class="palette-config-container">
+        <select id="palette-type" [formControl]="paletteType">
+            <option value="mono">mono</option>
+            <option value="analog">analogous</option>
+            <option value="triadic">triadic</option>
+            <option value="complementary">complementary</option>
+        </select>
+        <button type="submit">Generate</button>
+    </div>
+</form>
