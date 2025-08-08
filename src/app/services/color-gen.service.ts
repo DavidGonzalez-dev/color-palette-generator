@@ -36,6 +36,8 @@ export class ColorGenService {
     switch (this.paletteType) {
       case PaletteTypes.MONO:
         return this.getMonoPalette(baseColor, paletteSize)
+      case PaletteTypes.TRIADIC:
+        return this.getTriadicPalette(baseColor, paletteSize)
       default:
         return []
     }
@@ -82,6 +84,27 @@ export class ColorGenService {
     }
 
     return palette
+  }
+
+  getTriadicPalette(color: Color, paletteSize: number) {
+    // Calcular el rango de separacion de cada color
+    const increment = 360 / paletteSize
+    const palette: Color[] = Array(paletteSize)
+
+    palette[0] = color
+    // Calcular el hue de cada uno de los colores con la siguinete formula ((H % 360) + 360) % 360
+    for(let colorIndex=1; colorIndex < paletteSize; colorIndex++) {
+
+      const newHue = color.hsl.hue + (increment * colorIndex)
+      const fixedHue = ((newHue % 360) + 360) % 360
+      palette[colorIndex] = this.getColorCodes(`hsl(${fixedHue}, ${color.hsl.saturation}%, ${color.hsl.lightness}%)`)
+    }
+
+    return palette
+  }
+
+  getAnalogPalette(color: Color, paletteSize: number) {
+    
   }
 
   private getHslCodeFromColor(color: string): HSL {
