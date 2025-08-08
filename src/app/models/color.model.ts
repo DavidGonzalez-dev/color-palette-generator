@@ -19,7 +19,7 @@ export interface Color {
 
 export enum PaletteTypes {
     MONO = "mono",
-    ANALOG = "analogous",
+    ANALOG = "analog",
     TRIADIC = "triadic",
     COMPLEMENTARY = "complementary"
 }

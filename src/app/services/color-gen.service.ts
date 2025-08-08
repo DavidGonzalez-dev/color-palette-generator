@@ -8,7 +8,7 @@ import ColorNamer from 'color-namer';
 })
 export class ColorGenService {
 
-  private baseColor = signal<Color>(this.getColorCodes("black"))
+  private baseColor = signal<Color>(this.getColorCodes("blue"))
   private paletteType = PaletteTypes.MONO
 
   setBaseColor(color: string) {
@@ -31,13 +31,15 @@ export class ColorGenService {
     return { name: ColorNamer(color).ntc[0].name, hex: chroma(color).hex(), hsl: this.getHslCodeFromColor(color), rgb: this.getRgbCodeFromColor(color) }
   }
 
-  getColorPalette(baseColor: Color, paletteSize:number): Color[] {
-    
+  getColorPalette(baseColor: Color, paletteSize: number): Color[] {
+
     switch (this.paletteType) {
       case PaletteTypes.MONO:
         return this.getMonoPalette(baseColor, paletteSize)
       case PaletteTypes.TRIADIC:
         return this.getTriadicPalette(baseColor, paletteSize)
+      case PaletteTypes.ANALOG:
+        return this.getAnalogPalette(baseColor, paletteSize)
       default:
         return []
     }
@@ -93,8 +95,7 @@ export class ColorGenService {
 
     palette[0] = color
     // Calcular el hue de cada uno de los colores con la siguinete formula ((H % 360) + 360) % 360
-    for(let colorIndex=1; colorIndex < paletteSize; colorIndex++) {
-
+    for (let colorIndex = 1; colorIndex < paletteSize; colorIndex++) {
       const newHue = color.hsl.hue + (increment * colorIndex)
       const fixedHue = ((newHue % 360) + 360) % 360
       palette[colorIndex] = this.getColorCodes(`hsl(${fixedHue}, ${color.hsl.saturation}%, ${color.hsl.lightness}%)`)
@@ -104,16 +105,37 @@ export class ColorGenService {
   }
 
   getAnalogPalette(color: Color, paletteSize: number) {
-    
+
+    const spread = 100
+    const increment = spread / (paletteSize - 1)
+
+    const palette: Color[] = Array(paletteSize)
+    const middleIndex = Math.floor(paletteSize / 2)
+    console.log(middleIndex)
+    palette[middleIndex] = color
+
+    for (let colorIndex = middleIndex - 1; colorIndex >= 0; colorIndex--) {
+      const newHue = color.hsl.hue - (increment * (middleIndex - colorIndex))
+      const fixedHue = ((newHue % 360) + 360) % 360
+      palette[colorIndex] = this.getColorCodes(`hsl(${fixedHue}, ${color.hsl.saturation}%, ${color.hsl.lightness}%)`)
+    }
+
+    for (let colorIndex = middleIndex + 1; colorIndex < paletteSize; colorIndex++) {
+      const newHue = color.hsl.hue + (increment * (colorIndex - middleIndex))
+      const fixedHue = ((newHue % 360) + 360) % 360
+      palette[colorIndex] = this.getColorCodes(`hsl(${fixedHue}, ${color.hsl.saturation}%, ${color.hsl.lightness}%)`)
+    }
+    return palette
   }
 
   private getHslCodeFromColor(color: string): HSL {
     const hslTuple = chroma(color).hsl()
 
-    return { 
-      hue: Number.isNaN(hslTuple[0]) ? 0 : Math.round(hslTuple[0]), 
-      saturation: Math.round(hslTuple[1] * 100), 
-      lightness: Math.round(hslTuple[2] * 100) }
+    return {
+      hue: Number.isNaN(hslTuple[0]) ? 0 : Math.round(hslTuple[0]),
+      saturation: Math.round(hslTuple[1] * 100),
+      lightness: Math.round(hslTuple[2] * 100)
+    }
   }
 
   private getRgbCodeFromColor(color: string): RGB {
